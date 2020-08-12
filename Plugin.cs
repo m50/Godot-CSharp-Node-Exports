@@ -47,7 +47,7 @@ namespace CSharpExports
 
                 Script script = GD.Load<Script>(typeAttr.scriptPath);
                 Texture texture = null;
-                if (icon != null) texture = GD.Load<Texture>(icon.imagePath);
+                if (icon != null) texture = ResourceLoader.Load<Texture>(icon.imagePath);
                 AddCustomType(t.Name, t.BaseType.Name, script, texture);
                 _customTypes.Add(t.Name);
             }
