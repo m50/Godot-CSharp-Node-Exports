@@ -17,6 +17,7 @@ namespace CSharpExports
             _customTypes = new List<string>();
             _BuildTypes();
             Connect("resource_saved", this, "OnResourceSaved");
+            AddToolMenuItem("Reload C# Resources", this, nameof(_BuildTypes));
         }
 
         public override void _ExitTree()
@@ -25,17 +26,18 @@ namespace CSharpExports
             {
                 RemoveCustomType(t);
             }
+            RemoveToolMenuItem("Reload C# Resources");
         }
 
         public void OnResourceSaved(Resource resource)
         {
-            _ExitTree();
-            _customTypes = new List<string>();
             _BuildTypes();
         }
 
         private void _BuildTypes()
         {
+            _ExitTree();
+            _customTypes = new List<string>();
             var assembly = Assembly.GetExecutingAssembly();
             var typeList = assembly.GetTypes().Where(
                 t => t.GetCustomAttributes(typeof(TypeExportAttribute), true).Length > 0
