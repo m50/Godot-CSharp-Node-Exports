@@ -1,3 +1,4 @@
+#if TOOLS
 using Godot;
 using System.Reflection;
 using System.Linq;
@@ -53,3 +54,4 @@ namespace CSharpExports
         }
     }
 }
+#endif
