@@ -13,7 +13,7 @@ using Godot;
 
 namespace GameObjects.Plants
 {
-    [TypeExport("res://Src/GameObjects/Plants/Plant.cs")]
+    [ClassPath("res://Src/GameObjects/Plants/Plant.cs")]
     [Icon("res://Assets/GameObjects/Plants/Pumpkin/PumpkinIcon.png")]
     public class Plant : Sprite
     {

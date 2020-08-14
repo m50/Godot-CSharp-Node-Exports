@@ -40,11 +40,11 @@ namespace CSharpExports
             _customTypes = new List<string>();
             var assembly = Assembly.GetExecutingAssembly();
             var typeList = assembly.GetTypes().Where(
-                t => t.GetCustomAttributes(typeof(TypeExportAttribute), true).Length > 0
+                t => t.GetCustomAttributes(typeof(ClassPathAttribute), true).Length > 0
             ).ToList();
             foreach (var t in typeList)
             {
-                TypeExportAttribute typeAttr = t.GetCustomAttribute<TypeExportAttribute>();
+                ClassPathAttribute typeAttr = t.GetCustomAttribute<ClassPathAttribute>();
                 IconAttribute icon = t.GetCustomAttribute<IconAttribute>();
 
                 Script script = GD.Load<Script>(typeAttr.scriptPath);

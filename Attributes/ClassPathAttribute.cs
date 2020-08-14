@@ -1,11 +1,11 @@
 namespace CSharpExports.Attributes
 {
     [System.AttributeUsage(System.AttributeTargets.Class)]
-    sealed class TypeExportAttribute : System.Attribute
+    sealed class ClassPathAttribute : System.Attribute
     {
         public readonly string scriptPath;
 
-        public TypeExportAttribute(string scriptPath)
+        public ClassPathAttribute(string scriptPath)
         {
             this.scriptPath = scriptPath;
         }
