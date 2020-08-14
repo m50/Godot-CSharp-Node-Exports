@@ -26,12 +26,16 @@ namespace GameObjects.Plants
 
 As you can see here, we have exported the Plant type and added a Pumpkin icon to it.
 
+Reloads happen whenever a resource is saved, or can be done manually in `Project \> Tools \> Reload C# Resources`.
+
+Since this plugin interacts with the rest of our code, it is required to be referenced in your csproj file.
+
+```xml
+<Compile Include="addons/**/*.cs" Condition=" '$(Configuration)' == 'Debug' " />
+```
+
 ## Known Issues
 
 The biggest limitation is that you have to provide the path to the actual script.
 While annoying, this is required. In theory, this could be determined by the namespace,
 but that would require some additional structuring and/or configuration of namespaces.
-
-Since Godot doesn't have a signal for build complete, this reloads the objects
-everytime it enters the tree, and so adding a new one requires unloading and re-loading
-the plugin. To try and minimize this, it also reloads if a resource has been saved.
