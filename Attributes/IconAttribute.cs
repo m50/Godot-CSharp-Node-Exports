@@ -1,4 +1,4 @@
-namespace CSharpClassName.Attributes
+namespace ClassName.Attributes
 {
     [System.AttributeUsage(System.AttributeTargets.Class)]
     sealed class IconAttribute : System.Attribute
