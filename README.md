@@ -11,8 +11,8 @@ Example:
 using ClassName.Attributes;
 using Godot;
 
-[ClassName, Icon("res://Path/To/Icon.png")]
-public class MySprite : Sprite
+[ClassName, Icon("res://Path/To/PlantIcon.png")]
+public class Plant : Sprite
 {
     //...
 }
