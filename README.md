@@ -20,18 +20,30 @@ public class MySprite : Sprite
 
 ![Screenshot of editor](images/image.png)
 
-As you can see here, we have exported the Plant type and added a Pumpkin icon to it.
+As you can see here, we have exported the MySprite type and added an icon to it.
 
-Reloads happen whenever a resource is saved, or can be done manually in `Project \> Tools \> Reload C# Resources`.
+Another example:
 
-Since this plugin interacts with the rest of our code, it is required to be referenced in your csproj file.
+```csharp
+using ClassName.Attributes;
+using Godot;
+
+[ClassName, Icon("res://Path/To/Icon.png")]
+public class MyResource : Resource
+{
+    //...
+}
+```
+
+Reloads happen whenever a resource is saved (though, this is undocumented in Godot so can't guarantee how it works),
+or can be done manually in `Project > Tools > Reload C# Resources`.
+
+Since this plugin interacts with the rest of your code, it is required to be referenced in your csproj file.
 
 ```xml
 <Compile Include="addons/**/*.cs" Condition=" '$(Configuration)' == 'Debug' " />
 ```
 
-## Known Issues
+## Thanks To:
 
-The biggest limitation is that you have to provide the path to the actual script.
-While annoying, this is required. In theory, this could be determined by the namespace,
-but that would require some additional structuring and/or configuration of namespaces.
+- [Spartan322](https://github.com/Spartan322) - For the code review and help cleaning up the API.
