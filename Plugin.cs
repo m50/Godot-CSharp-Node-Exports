@@ -22,10 +22,7 @@ namespace ClassName
 
         public override void _ExitTree()
         {
-            foreach (var t in _customTypes)
-            {
-                RemoveCustomType(t);
-            }
+            _RemoveTypes();
             RemoveToolMenuItem("Reload C# Resources");
         }
 
@@ -34,9 +31,15 @@ namespace ClassName
             _BuildTypes();
         }
 
+        private void _RemoveTypes()
+        {
+            foreach (var t in _customTypes)
+                RemoveCustomType(t);
+        }
+
         private void _BuildTypes()
         {
-            _ExitTree();
+            _RemoveTypes(); // Prevent duplicates of the types.
             _customTypes = new List<string>();
             var assembly = Assembly.GetExecutingAssembly();
             var typeList = assembly.GetTypes().Where(
