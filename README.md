@@ -11,14 +11,10 @@ Example:
 using ClassName.Attributes;
 using Godot;
 
-namespace GameObjects.Plants
+[ClassName, Icon("res://Path/To/Icon.png")]
+public class MySprite : Sprite
 {
-    [ClassPath("res://Src/GameObjects/Plants/Plant.cs")]
-    [Icon("res://Assets/GameObjects/Plants/Pumpkin/PumpkinIcon.png")]
-    public class Plant : Sprite
-    {
-        //...
-    }
+    //...
 }
 ```
 
