@@ -1,4 +1,4 @@
-# C# Exports for Godot
+# C# class_name for Godot
 
 In gdscript in Godot, you can use `class_name Name, "res://path/to/icon.png"` and
 the class will export into the editor. However, in C# this isn't really possible.

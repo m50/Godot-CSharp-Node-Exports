@@ -2,10 +2,10 @@
 using Godot;
 using System.Reflection;
 using System.Linq;
-using CSharpExports.Attributes;
+using CSharpClassName.Attributes;
 using System.Collections.Generic;
 
-namespace CSharpExports
+namespace CSharpClassName
 {
     [Tool]
     public class Plugin : EditorPlugin
