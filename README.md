@@ -8,7 +8,7 @@ As such, this can be used to work around that issue.
 Example:
 
 ```csharp
-using CSharpExports.Attributes;
+using ClassName.Attributes;
 using Godot;
 
 namespace GameObjects.Plants
