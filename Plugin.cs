@@ -1,7 +1,6 @@
 #if TOOLS
 using Godot;
 using System.Reflection;
-using System.Linq;
 using ClassName.Attributes;
 using System.Collections.Generic;
 
@@ -43,22 +42,22 @@ namespace ClassName
             _RemoveTypes(); // Prevent duplicates of the types.
             _customTypes = new List<string>();
             var assembly = Assembly.GetExecutingAssembly();
-            var typeList = assembly.GetTypes().Where(
-                t => t.GetCustomAttributes(typeof(ClassNameAttribute), true).Length > 0
-            ).ToList();
-            foreach (var t in typeList)
+            foreach (var t in assembly.GetTypes())
             {
                 if (!t.IsSubclassOf(typeof(Godot.Resource)) && !t.IsSubclassOf(typeof(Godot.Node)))
                 {
-                    GD.PrintErr("[", t.ToString(), "]: ClassNameAttribute only works with Resources or Nodes.");
+                    GD.PrintErr($"[{t}]: ClassNameAttribute only works with Resources or Nodes.");
                     continue;
                 }
                 ClassNameAttribute typeAttr = t.GetCustomAttribute<ClassNameAttribute>();
+                if (typeAttr == null) continue;
+
                 IconAttribute icon = t.GetCustomAttribute<IconAttribute>();
 
                 Script script = ResourceLoader.Load<Script>(typeAttr.ScriptPath);
                 Texture texture = null;
                 if (icon != null) texture = ResourceLoader.Load<Texture>(icon.ImagePath);
+                
                 AddCustomType(t.Name, t.BaseType.Name, script, texture);
                 _customTypes.Add(t.Name);
             }
