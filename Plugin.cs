@@ -44,20 +44,20 @@ namespace ClassName
             var assembly = Assembly.GetExecutingAssembly();
             foreach (var t in assembly.GetTypes())
             {
+                ClassNameAttribute typeAttr = t.GetCustomAttribute<ClassNameAttribute>();
+                if (typeAttr == null) continue;
                 if (!t.IsSubclassOf(typeof(Godot.Resource)) && !t.IsSubclassOf(typeof(Godot.Node)))
                 {
                     GD.PrintErr($"[{t}]: ClassNameAttribute only works with Resources or Nodes.");
                     continue;
                 }
-                ClassNameAttribute typeAttr = t.GetCustomAttribute<ClassNameAttribute>();
-                if (typeAttr == null) continue;
 
                 IconAttribute icon = t.GetCustomAttribute<IconAttribute>();
 
                 Script script = ResourceLoader.Load<Script>(typeAttr.ScriptPath);
                 Texture texture = null;
                 if (icon != null) texture = ResourceLoader.Load<Texture>(icon.ImagePath);
-                
+
                 AddCustomType(t.Name, t.BaseType.Name, script, texture);
                 _customTypes.Add(t.Name);
             }
